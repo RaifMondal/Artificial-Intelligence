@@ -1,0 +1,643 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Artificial Intelligence</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1c624703-638f-464b-802a-9795a7255856" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 15.339999999999998%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🖥️</span></div><h1 class="page-title">Artificial Intelligence</h1></header><div class="page-body"><blockquote id="93b7b7e8-d639-49d8-b41f-3a6b23bcda53" class="">Article by Raif Mondal</blockquote><h1 id="775cd213-4869-4ffc-b149-a14f27942350" class="">Table of Contents</h1><ol type="1" id="85babb93-ec1f-4651-b1ba-03ec7030325b" class="numbered-list" start="1"><li>Introduction</li></ol><ol type="1" id="8bc59ed4-aad9-40b7-9ca4-bd0f69782db9" class="numbered-list" start="2"><li>Real World Scenario of an AI</li></ol><ol type="1" id="957ff280-40e4-410b-b589-47e988649245" class="numbered-list" start="3"><li>Bellman&#x27;s Equation</li></ol><ol type="1" id="f30f1059-926a-4eb7-b24a-52270201a02a" class="numbered-list" start="4"><li>Reinforcement Learning</li></ol><ol type="1" id="1bba20f6-6eb1-41d6-bc3a-ea90b8c29bba" class="numbered-list" start="5"><li>Markov Decision Process</li></ol><ol type="1" id="42863b7d-e854-4c7e-a913-ecb3ee877842" class="numbered-list" start="6"><li>Living Penalty</li></ol><ol type="1" id="aa7dd09e-405a-4acb-9809-186bcc52542f" class="numbered-list" start="7"><li>Synopsis</li></ol><p id="98b5a225-16c0-4284-b833-5d79ced813c1" class="">
+</p><h2 id="6dde4a56-a598-48bd-a8ac-9a4c9208d848" class="">Introduction</h2><p id="4b3f8020-ba98-4832-85a0-7e27f2b5e2ea" class="">AI or Artificial Intelligence, is an intelligence which is demonstrated by machines as humans do. In this field, computers think somewhat like humans, choose the right decision as a human does, taking care of various parameters, and many more. In today’s world, AI is used to make self-driving cars, self-flying drones, medical diagnosis, writing a poem, playing chess, search engines like Google, Yahoo and Bing Search, Online Assistants like Siri, Google Assistant, Cortana, and Alexa, image recognition in photographs and videos, spam filtering, predicting flight delays, smart trading bots and chat bots, prediction of judicial decisions, target online advertisement and energy conservations. These are the wide range of applications where AI is used. An AI can also produce Deepfakes, which mean to create a video or photograph of a person or a thing and changing the way the person or the thing behaved in the original format into a desirable format of the user. The very basic thing which is used in AI is called A Bellman’s Equation.</p><p id="f5f95f7c-123d-405d-b8d2-14cef97aea9d" class="">
+</p><h2 id="0161c2ec-4182-4827-a299-813f8b7582fd" class="">Real World Scenario of an AI</h2><p id="641c57c7-032e-4102-83b3-61d31820c6fe" class="">At first let’s take an example of an agent (computer) is playing a game.</p><figure id="c7dacfb0-55d1-4b01-a5a8-4797f528a66b" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled.png"/></a></figure><p id="864a676b-04b6-4921-88c2-af4764933b99" class="">Here the Green Box depicts the End of the Game, where the agent wins the game, whereas the red box which also show a fire emoji, depicts the End of the Game, where the agent loses the game.</p><p id="010ada8d-74fc-4bef-b9b1-5db08d40e814" class="">In AI, the agent which is playing the game, doesn’t perform anything when we say it to do. This is because agents are behaving like humans. They won’t do something, till we give them some reward. Here in AI, the reward given to the agent is a hypothetical reward. The reward can be anything, you may set the reward to an alphabet, or a number, that doesn’t matter. The thing matters the most is that the agent looks for collecting more rewards.</p><p id="cfc958aa-3d42-45a6-8267-92182ec365fe" class="">Here I will set the reward for the Green Box to be +1 and the Red Box to be -1. These rewards are all hypothetical in nature, you neither have to buy or spend any money to buy a reward for the agent. Now when the agent comes to know that the reward is set. Then he calculates the best choice of reward which it needs. It will obviously choose to have a reward of +1, because it knows that -1 is less than +1.</p><p id="4ba7bd5e-0419-4e97-8a76-0d33e5f7e396" class="">Therefore, he start to roam randomly throughout the map, sometimes taking long walks, sometime constantly hitting itself on the game wall, or may have dived into the red box. When he goes to the red box the game is ended, and the user should restart. When the agent reaches the green box, the agent becomes happy to get the reward, now the agent thinks of getting the same reward, but he wanted to get the reward, within a short period of time. So at first he will think about the box due to which he landed in this green box. He will make a note of that box, because he came to know that whenever he reaches in that box, he will be just one step back from the reward. Now the question arises that, how will the agent come to know where he had se the second last step?</p><p id="85de5951-ac07-4277-adda-314bb7f3a0ac" class="">
+</p><h2 id="4484e49f-32ad-4626-9a43-90aa46aa71de" class="">Bellman&#x27;s Equation</h2><p id="6163e4e2-362b-4ed7-90a3-7a4dcf5105ca" class="">Here the Mathematical part of AI comes to picture. There is a formula known as Bellman’s Equation. Using this equation, the agent comes to know about the second last step.</p><p id="c1a99a80-524d-4d83-9308-a3429d7fb9e3" class="">The Equation is as follows:</p><figure id="c5a8155c-1241-4a6f-bb55-2aef6d182dee" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%201.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%201.png"/></a></figure><p id="94dec9f1-2e43-46d8-a8c1-53af7cc47f61" class="">This the Bellman’s Equation. This is the basic part of the Bellman’s Equation. We will modify the equation as we move forward here and add a level of difficulty.</p><p id="5dee7ea8-1030-4aaf-9d85-0df3822cf78b" class="">Let’s get familiar with the equation, Here ‘V’ represents the Value, ‘s’ represents the current state or the current box in which the agent is now standing, ‘max a’ represents the maximum actions taken inside the game, ‘R’ represents the reward, ‘a’ represents the action which will be taken from the current state to a new state, gamma represents the discounting factor; details about this will be discussed later, “ s’ ” represents the next state of the agent.</p><p id="3a2ffc4e-f636-4a55-b3c4-c9a9879afc75" class="">Let’s get the box again.</p><figure id="a51268be-8e6f-43ab-a468-5cf68bc5e18b" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%202.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%202.png"/></a></figure><p id="92c7e6cd-d1e0-473c-9d30-9c337cc48312" class="">Currently, the agent is inside the green box, which means that the game is finished and the agent won the game and he received a reward of +1. Now, if we order the agent to play the game, he would try to complete the game as quick as it can. So to do this, he should know the box before the green box. This is because he will come to know that whenever he will stand on that box, he will feel confident that if he moves on step forward, he will win the game and he will be awarded with a reward, which is +1 in this case. According to the equation:</p><figure id="ed694b83-3106-49ed-9132-14caef3a937b" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%203.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%203.png"/></a></figure><p id="586b350b-972c-47d1-92f8-83cc27ca0663" class="">The agent comes to know the value of the state of all the other boxes of the game by this equation. I haven’t discussed about the gamma sign or the discounting factor. This discounting factor is a factor which is set temporarily by the AI researcher, in order to have the equation work. Now the agent again roam throughout the board and reaches to the preceding box. Now the agent comes to know that if he step forward for once, he will win the game and will be rewarded +1. Now, if we again restart the game, now the agent wants to know the second box, or the box before the preceding box, because of which he reached into the preceding box. He uses the experience of the last game and uses the above given equation to find the value of the box before preceding box.</p><p id="26133564-3045-40d4-b3c9-9cb65e3a2f00" class="">
+</p><h2 id="c8414c92-a6ec-4ae3-b111-85eb877be4e8" class="">Reinforcement Learning</h2><p id="eb6ecb81-8166-4898-83f2-3f0e312dd644" class="">The value for the current state and action will be zero (s, a). This is because the agent is standing on a box which doesn’t has a reward. Therefore, the entire R(s, a) becomes zero. The gamma or the discounting factor value is set to 0.9 and the Value of the next box, the preceding box is 1, which is set by the agent. Therefore, gamma.V(s’) = 0.9x1 = 0.9. Therefore the Value of the second box is 0.9. The agent will come to know that if he lands on 0.9 valued box, the next box will be value of 1, which means he is very close to win the game. Now, the agent have to undergo lots and lots of restarts in order to map the values of all the boxes. At last the path of the map looks like this,</p><figure id="4936a5b5-f414-4566-8c78-07edf19884da" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%204.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%204.png"/></a></figure><p id="7ee725b6-49db-45ce-9e82-a9f90649ab78" class="">The above practice of finding the values of the map is called Reinforcement Learning.</p><p id="71271da1-e887-4970-8bed-c5236ff34229" class="">You might have seen robot dogs. They are trained to walk over certain obstacles and they can walk better than ordinary dogs! This is done by reinforcement learning. You can see the difference between a pre-programmed robot dogs verses an AI robot dogs. Both of them have been asked to do the same thing. The pre-programmed dog will do the actions, which they are told to do so, whereas the AI robot dogs, learn through their mistakes as a child does when he first learns to walk. Now if we compare the child at the age when he was learning to walk from the age of an adult, there is quite a lot of difference. This is because the child have learned from his mistakes and he had stored that mistakes in his mind, so that he won’t repeat it again. Same concept is used for reinforcement learning. This concept of reinforcement learning is only possible because of Mathematics and its formulas. But, the reality is that whatever you have understand till now, like the working and understanding of the agent. It might looks pretty simple and easy, but the catch is that, whatever we think to do, it doesn’t happen the greatest. The explanation of the phrase will be done in the next section of the topic and the bellman’s equation will be updated a little bit, with a pinch of difficulty.</p><p id="e502865a-5e7d-42fc-8eff-44ff46421d74" class="">Now, if the agent, let’s say is standing on the box which has a value of 0.66. Now the agent has two paths. According to us, both the paths have equal distance and the will take equal amount of time to reach the end point or the green box. But the reality is that, whatever we think of doing something, it doesn’t happen that way. So the next part of the topic is all about the types of actions which the agent takes during the game.</p><p id="dd4fe8b1-9716-4a02-bbeb-f686e4fc7abd" class="">
+</p><h2 id="1544f357-7969-4736-8a30-a1a795e8926b" class="">Markov Decision Process</h2><figure id="aa41352c-b0b1-47a7-a85a-a7799d60a375" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%205.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%205.png"/></a></figure><p id="fb601ffb-12f0-46f8-ad4f-cbb1d3607479" class="">Let’s assume that the agent is standing in the box which has a value of 0.81(second box from the left, first row from the last). The agent has three ways to move itself, upwards, left and right. There is also a possibility of the agent to hit the wall of the board. Now the concept of Deterministic and Non-Deterministic search comes into picture, here the first term Deterministic means that whatever the agent thinks it wants to be done, the agent does the right thing within a short span of time, but the second term means that whatever the agent wants to be done, there is a little probability of the accuracy of the action to be taken place. The agent might go somewhere else. As in the above given situation of the agent standing in the box which is valued as V=0.81. Now the agent decides to move upwards. This is because the agent knows that the value of the box which is above has a greater value than the box which is on its left and right.</p><p id="d71d13b8-6edb-4ba0-ac7a-722deaba2c06" class="">Let’s come out of that scene and jump into a new scene.</p><figure id="3c2c4472-6467-44d8-a6c0-c074e990c540" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%206.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%206.png"/></a></figure><p id="871a06a5-6155-46f0-ab76-d421958e49b7" class="">This is an image of a non-deterministic search. Here the agent is on a box (currently without any values). The agent has decided to move forward, but according to the non-deterministic search concept, there is an 80% probability of the agent to move forward, 10% probability to move to its left and 10% probability to fall into the fire box and lose the game. This is how A.I works and process is called MDP (Markov’s Decision Process).</p><figure id="075abfd2-095b-4e22-8de6-142d9b2be14b" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%207.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%207.png"/></a></figure><p id="df8b5fce-1b4d-4d11-aeef-a302ed0b4ad8" class="">Now our Bellman’s Equation becomes more sophisticated.</p><p id="be507f5b-70f0-460f-ab42-3feed8ec20c0" class="">Now there is a form of randomness inside the equation, so the value of V(s’) can’t be decided before, because we don’t know where will the agent move.</p><figure id="ccfe606c-4513-43ae-b7c5-453d94883b52" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%208.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%208.png"/></a></figure><p id="dfe08bc8-3049-4181-b93c-827978f87c97" class="">Now the Value of the next state will be replaced by the three possible states.</p><figure id="557476da-8452-47f1-816a-028e633d043f" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%209.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%209.png"/></a></figure><p id="5e17c4bc-2c79-4d1f-a63f-8c1c1cf8ba24" class="">Now the agent will multiply the expected probability with the respective values and the equation changes to this:</p><figure id="2078deb0-5190-4481-8c97-0825f5df5a62" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2010.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2010.png"/></a></figure><p id="f1b74074-bd46-4039-9ccb-6f199f801317" class="">The equation changes to the expected value of the next box.</p><figure id="c62824ce-8e90-4f7b-9beb-e1c5aab7357b" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2011.png"><img style="width:291px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2011.png"/></a></figure><p id="67094467-5144-4c9b-a332-d1c206735ec6" class="">This represents the sum of all possible values which are probable values, of the next box.</p><p id="4a835e2d-908b-4ec5-9e6f-ae679a0aa530" class="">Due to this problem, the AI thinks different than any ordinary pre-programmed robot dog or even humans.</p><figure id="94ef06db-2fb0-44d4-b4d8-8657f155361a" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2012.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2012.png"/></a></figure><p id="fbeabe21-1d54-43aa-83de-89e5f7f64809" class="">This are the value s of the board.</p><figure id="dc48ae2d-286e-49d1-bb94-c59ad569f760" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2013.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2013.png"/></a></figure><p id="d18ee2e3-d06f-45bb-914a-bac85eb11481" class="">Here the plan is showed. These are the two possible ways for the agent to complete the game and takeaway the reward. But here, the values got changed and none of the values inside the board game are equal. The reason behind this is the randomness and of course, I did it with the help of the discounting factor, which I changed. Now the agent has two routes to reach the green box, one through the far end of the box and the other between a wall and fire box. Now according to randomness, if the agent is standing between the wall and the fire (Example of a situation while taking a shortcut). Here the agent, obviously wants to go forward, but due to randomness, its path breaks to three infront of him, according to their corresponding probabilities. Lets say the moving forwards have a probability of 80% and the hitting the wall and jumping inside the fire box have a probability of 10% each. For this, a new concept called &quot;Living Penalty&quot; is made for the agent to think on this problem.</p><figure id="daadc581-2868-47cb-b946-ea5206c43d7a" class="image"><a href="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2014.png"><img style="width:602px" src="Artificial%20Intelligence%20c7dacfb055d14b01a5a84797f528a66b/Untitled%2014.png"/></a></figure><p id="efb620b1-78ba-45ba-9070-8d7f83090a70" class="">
+</p><h2 id="2ad32893-57f8-4f3a-b8fb-d5c7125410ce" class="">Living Penalty</h2><p id="ce698066-9adb-4680-99ee-267d22008c03" class="">This is a concept inside Reinforcement Learning, where the agent will be rewarded a negative reward, because of which the mentality of the agent changes and he tries to complete the board game quickly.</p><p id="0d1e4e55-f4e4-4190-b758-07578c78e447" class="">
+</p><h2 id="20476d09-e81a-4ffb-83aa-bf9cfae1dcc2" class="">Synopsis</h2><p id="aa5a64f5-fc7b-4281-9748-3a8488879887" class="">This is how Artificial Intelligent Systems are made and trained for their individual field of application. This paper does not cover every step of creating an AI, but tries to establish an understanding about how an AI works and how can it be created. However, today we do actually know about AI, but the reality is that we still don&#x27;t know much about it. It is a vast ocean of data which is yet to be discovered and used in real life.</p></div></article></body></html>
